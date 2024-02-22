@@ -1,11 +1,11 @@
 [package]
 name = "gnostr-xq"
-version = "0.3.0"
+version = "0.0.0"
 authors = ["mi_sawa <mi.sawa.1216+git@gmail.com>"]
 edition = "2021"
-description = "A reimplementation of jq."
+description = "gnostr-xq:A reimplementation of jq."
 license = "MIT"
-repository = "https://github.com/MiSawa/xq"
+repository = "https://github.com/gnostr-org/gnostr-xq"
 readme = "README.md"
 exclude = [".github"]
 
@@ -18,13 +18,13 @@ pkg-url = "{ repo }/releases/download/v{ version }/{ name }-v{ version }-{ targe
 pkg-fmt = "zip"
 
 [package.metadata.release]
-pre-release-hook = ["cargo", "update", "--manifest-path", "./fuzz/Cargo.toml", "-p", "xq"]
+pre-release-hook = ["cargo", "update", "--manifest-path", "./fuzz/Cargo.toml", "-p", "gnostr-xq"]
 
 [workspace]
 members = [ "crates/*" ]
 
 [[bin]]
-name = "xq"
+name = "gnostr-xq"
 path = "src/bin/main.rs"
 required-features = ["build-binary"]
 

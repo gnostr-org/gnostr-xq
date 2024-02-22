@@ -1,6 +1,6 @@
 use std::iter::Once;
 
-use xq::{util::SharedIterator, Array, InputError, Value};
+use gnostr_xq::{util::SharedIterator, Array, InputError, Value};
 
 type ResultValue = Result<Value, InputError>;
 
