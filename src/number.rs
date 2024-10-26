@@ -84,7 +84,7 @@ impl<'de> Deserialize<'de> for Number {
         D: Deserializer<'de>,
     {
         struct V;
-        impl<'de> serde::de::Visitor<'de> for V {
+        impl serde::de::Visitor<'_> for V {
             type Value = Number;
 
             fn expecting(&self, formatter: &mut Formatter) -> std::fmt::Result {
