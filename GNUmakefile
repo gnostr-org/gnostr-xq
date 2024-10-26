@@ -27,6 +27,7 @@ cargo-b:## 	cargo-b
 	[ -x "$(shell command -v $(CARGO))" ] && $(CARGO) build
 cargo-build-release:cargo-b-release
 cargo-b-release:## 	cargo-b-release
+cargo-br:cargo-b-release## 	cargo-br
 ##cargo build --releae --path .
 	[ -x "$(shell command -v $(RUSTUP))" ] || $(MAKE) rustup-install-stable
 	[ -x "$(shell command -v $(CARGO))" ] && $(CARGO) build --release
@@ -42,7 +43,7 @@ cargo-doc:## 	cargo-doc
 cargo-i:## 	cargo-i
 ##cargo install
 	[ -x "$(shell command -v $(RUSTC))" ] || $(MAKE) rustup-install-stable
-	[ -x "$(shell command -v $(CARGO))" ] && $(CARGO) install --force --path .
+	[ -x "$(shell command -v $(CARGO))" ] && $(CARGO) install $(FORCE) --path .
 cargo-publish:## cargo publish
 	cargo publish --registry crates-io
 

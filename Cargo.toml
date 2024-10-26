@@ -1,6 +1,6 @@
 [package]
 name = "gnostr-xq"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["mi_sawa <mi.sawa.1216+git@gmail.com>"]
 edition = "2021"
 description = "gnostr-xq:A reimplementation of jq."
@@ -23,6 +23,25 @@ pre-release-hook = ["cargo", "update", "--manifest-path", "./fuzz/Cargo.toml", "
 [workspace]
 members = [ "crates/*" ]
 
+# Config for 'cargo dist'
+[workspace.metadata.dist]
+# The preferred cargo-dist version to use in CI (Cargo.toml SemVer syntax)
+cargo-dist-version = "0.22.1"
+# CI backends to support
+ci = "github"
+# The installers to generate for each app
+installers = ["shell", "powershell", "homebrew"]
+# A GitHub repo to push Homebrew formulas to
+tap = "gnostr-org/homebrew-gnostr-org"
+# Target platforms to build apps for (Rust target-triple syntax)
+targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
+# Path that installers should place binaries in
+install-path = "CARGO_HOME"
+# Publish jobs to run in CI
+publish-jobs = ["homebrew"]
+# Whether to install an updater program
+install-updater = true
+
 [[bin]]
 name = "gnostr-xq"
 path = "src/bin/main.rs"
@@ -43,6 +62,11 @@ codegen-units = 1
 
 [profile.dev.build-override]
 opt-level = 3
+
+# The profile that 'cargo dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
 
 [dependencies]
 xq-lang = { path = "./crates/lang", version = "0.0.1" }
