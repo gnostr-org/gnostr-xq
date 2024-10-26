@@ -43,7 +43,7 @@ fn compare(lhs: Value, rhs: Value) -> Option<Ordering> {
 /// A wrapper of [Value] to treat it as a [PartialEq] and a [PartialOrd].
 struct PartialValue<'a>(&'a Value);
 
-impl<'a> PartialEq<Self> for PartialValue<'a> {
+impl PartialEq<Self> for PartialValue<'_> {
     fn eq(&self, other: &Self) -> bool {
         use Value::*;
         match (self.0, other.0) {
@@ -76,7 +76,7 @@ impl<'a> PartialEq<Self> for PartialValue<'a> {
     }
 }
 
-impl<'a> PartialOrd<Self> for PartialValue<'a> {
+impl PartialOrd<Self> for PartialValue<'_> {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         use Ordering::*;
         use Value::*;
