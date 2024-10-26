@@ -1,6 +1,6 @@
 use std::error::Error;
 
-use xq::{module_loader::PreludeLoader, run_query, util::SharedIterator, InputError, Value};
+use gnostr_xq::{module_loader::PreludeLoader, run_query, util::SharedIterator, InputError, Value};
 
 #[macro_export]
 macro_rules! test {
